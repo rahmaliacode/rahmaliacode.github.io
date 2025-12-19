@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portofolio Rahma</title>
+  <title>Index - DevFolio Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -27,6 +27,241 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Custom Portfolio Styles -->
+  <style>
+    /* Enhanced Portfolio Cards */
+    .portfolio-item .service-item {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border: 2px solid #e9ecef;
+      border-radius: 15px;
+      padding: 30px;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-item .service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .portfolio-item .service-item:hover::before {
+      left: 100%;
+    }
+
+    .portfolio-item .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 120, 255, 0.2);
+      border-color: #0078ff;
+    }
+
+    /* Colored Icons with Background */
+    .portfolio-item .service-item .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    /* Icon colors by category - using higher specificity */
+    .portfolio-item.filter-web .service-item .icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .portfolio-item.filter-backend .service-item .icon {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .portfolio-item.filter-security .service-item .icon {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .portfolio-item.filter-integration .service-item .icon {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .portfolio-item .service-item:hover .icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .portfolio-item .service-item .icon i {
+      font-size: 32px;
+    }
+
+    /* Enhanced Typography */
+    .portfolio-item .service-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--heading-color);
+      transition: color 0.3s;
+    }
+
+    .portfolio-item .service-item:hover h3 {
+      color: #0078ff;
+    }
+
+    .portfolio-item .service-item p {
+      color: #6c757d;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Link Icon Enhancement */
+    .portfolio-item .service-item .stretched-link {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0078ff 0%, #0056b3 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-item .service-item:hover .stretched-link {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .portfolio-item .service-item .stretched-link:hover {
+      background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+      transform: scale(1.1);
+    }
+
+    /* Filter Buttons Enhancement - Eye Catching Design */
+    .portfolio-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .portfolio-filters li {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 50px;
+      padding: 12px 28px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #ffffff;
+      color: #4a5568;
+      border: 2px solid #e2e8f0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      z-index: 1;
+    }
+
+    .portfolio-filters li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+      border-radius: 50px;
+    }
+
+    .portfolio-filters li::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+      z-index: 1;
+    }
+
+    .portfolio-filters li:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .portfolio-filters li:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      border-color: #667eea;
+      color: white;
+    }
+
+    .portfolio-filters li:hover::before {
+      opacity: 1;
+    }
+
+    /* Active Tab - Very Visible */
+    .portfolio-filters li.filter-active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      color: #ffffff !important;
+      border-color: #667eea !important;
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6), 0 0 20px rgba(102, 126, 234, 0.4) !important;
+      transform: translateY(-2px) scale(1.05) !important;
+      font-weight: 700 !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+
+    .portfolio-filters li.filter-active::before {
+      opacity: 1 !important;
+      z-index: 0 !important;
+      position: absolute !important;
+    }
+
+    .portfolio-filters li.filter-active::after {
+      width: 200px;
+      height: 200px;
+      z-index: 1 !important;
+    }
+
+    /* Add subtle animation for active state */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6), 0 0 20px rgba(102, 126, 234, 0.4);
+      }
+      50% {
+        box-shadow: 0 8px 35px rgba(102, 126, 234, 0.8), 0 0 25px rgba(102, 126, 234, 0.6);
+      }
+    }
+
+    .portfolio-filters li.filter-active {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: DevFolio
   * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
@@ -44,7 +279,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Portofolio Rahma</h1>
+        <h1 class="sitename">Portfolio Rahma</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -89,7 +324,7 @@
               </div>
               <div class="col-lg-7 about-info">
                 <p><strong>Name: </strong> <span>Rahmalia Ahmadi</span></p>
-                <p><strong>Profile: </strong> <span>Backend developer</span></p>
+                <p><strong>Profile: </strong> <span>Software Engineer</span></p>
                 <p><strong>Email: </strong> <span>rahmaliaahmadi216@gmail.com</span></p>
                 <p><strong>Phone: </strong> <span>083101192171</span></p>
               </div>
@@ -100,24 +335,11 @@
               <h5>Skills</h5>
 
               <div class="progress">
-                <span class="skill"><span>JavaScript</span> <i class="val">85%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
-              <div class="progress">
-                <span class="skill"><span>Vue Js</span> <i class="val">75%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
-              <div class="progress">
                 <span class="skill"><span>PHP</span> <i class="val">90%</i></span>
                 <div class="progress-bar-wrap">
                   <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
-
               <div class="progress">
                 <span class="skill"><span>Laravel</span> <i class="val">90%</i></span>
                 <div class="progress-bar-wrap">
@@ -131,16 +353,45 @@
                 </div>
               </div><!-- End Skills Item -->
               <div class="progress">
-                <span class="skill"><span>PostgreSQL</span> <i class="val">70%</i></span>
+                <span class="skill"><span>JavaScript</span> <i class="val">85%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
-
               <div class="progress">
                 <span class="skill"><span>MongoDB</span> <i class="val">85%</i></span>
                 <div class="progress-bar-wrap">
                   <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+              <div class="progress">
+                <span class="skill"><span>Vue Js</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+              <div class="progress">
+                <span class="skill"><span>Firebase</span> <i class="val">70%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+              <div class="progress">
+                <span class="skill"><span>Node Js</span> <i class="val">60%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+              <div class="progress">
+                <span class="skill"><span>Flutter</span> <i class="val">30%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+              <div class="progress">
+                <span class="skill"><span>React Js</span> <i class="val">30%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
               
@@ -151,17 +402,26 @@
             <div class="about-me">
               <h4>About me</h4>
               <p>
-                I am a backend developer with experience developing web applications using PHP and Laravel. I also enjoy conducting research related to web application development.
+                I am a Software Engineer with experience developing web applications using PHP and Laravel. I also enjoy conducting research related to web application development.
               </p>
               <p>
                I also use several databases such as MySQL, MongoDB, and PostgreSQL. I enjoy learning new things and always want to develop myself, especially in the field of data processing.
               </p>
               <p>
-               I have also worked on several projects using the Laravel framework. and other projects.
+               I have also worked on several projects using the Laravel framework and other technologies such as Node.js, React.js, Flutter, and Firebase. I continuously expand my skill set to stay current with the latest technologies.
                </p>
               <p>
               Besides that, I am also active in teaching at the programming community that I created myself, namely <a href="https://www.instagram.com/maungulik.id/" target="_blank">maungulik.id
               </a>
+              </p>
+              <p>
+              I also like to learn about business, as I believe understanding business principles helps me create better solutions that align with both technical requirements and business goals.
+              </p>
+              <p>
+              I am also working on developing AI tools for code, similar to Cursor, to help developers work more efficiently and faster. I believe AI-assisted development can significantly enhance productivity and code quality.
+              </p>
+              <p>
+              I am currently open for <strong>collaboration</strong> and <strong>freelancer</strong> opportunities. If you have a project in mind or need assistance with web development, backend systems, or technical consulting, feel free to reach out to me.
               </p>
             </div>
           </div>
@@ -177,7 +437,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Resume</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>My resume and experience</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -189,7 +449,7 @@
 
             <div class="resume-item pb-0">
               <h4>Rahmalia Ahmadi</h4>
-              <p><em>Backend developer with 4+ years of experience developing web application using PHP and Laravel.</em></p>
+              <p><em>Software Engineer with 4+ years of experience developing web application using PHP and Laravel.</em></p>
               <ul>
                 <li>Jl. Pasirluyu, Bandung, Indonesia</li>
                 <li>083101192171</li>
@@ -209,7 +469,7 @@
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <h3 class="resume-title">Professional Experience</h3>
             <div class="resume-item">
-              <h4>Senior Backend Developer</h4>
+              <h4>Senior Software Engineer</h4>
               <h5>2022 - 2025</h5>
               <p><em>PT.Ordivo Teknologi Indonesia, Bandung, Indonesia </em></p>
               <ul>
@@ -340,48 +600,152 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>My recent projects and development work</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-<!-- 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
-          </ul> -->
+            <li data-filter=".filter-web">Web Development</li>
+            <li data-filter=".filter-backend">Backend</li>
+            <li data-filter=".filter-security">Security</li>
+            <li data-filter=".filter-integration">Integration</li>
+          </ul>
           <!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/app-ocademy.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Ocademy</h4>
-                <p>Website that provides Whitelist account and learning about advertising. This website is built using Laravel and MongoDB.</p>
-                <a href="https://ocademy.id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend filter-integration">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <h3>Ocademy</h3>
+                <p>Website that provides Whitelist account and learning about advertising. Built using Vue.js, Laravel, MongoDB, PostgreSQL, and Meta integration.</p>
+                <a href="https://ocademy.id" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/app-armadaku.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Armadaku</h4>
-                <p>Website that provides payment and tax services. This website is built using Laravel and MySQL.</p>
-                <a href="https://armadaku.id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <h3>Armadaku</h3>
+                <p>Website that provides payment and tax services. Built using PHP, Laravel, and MySQL.</p>
+                <a href="https://armadaku.id" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/app-cerebrum.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Cerebrum</h4>
-                <p>Making a website for the Cerebrum Edukanesia Nusantara company</p>
-                <a href="https://cerebrum.id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <h3>Cerebrum</h3>
+                <p>Website for the Cerebrum Edukanesia Nusantara company. Built using PHP, Laravel, and MySQL.</p>
+                <a href="https://cerebrum.id" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-box-seam"></i>
+                </div>
+                <h3>E-parcell</h3>
+                <p>Development of E-parcell web admin and backend system for parcel management and tracking. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-briefcase"></i>
+                </div>
+                <h3>Gasgawe</h3>
+                <p>Development of Gasgawe Web Admin and backend system for job marketplace and recruitment platform. Built using PHP, Laravel, Node.js, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-security">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h3>Santaiscale Security</h3>
+                <p>Development and maintenance of security systems in Santaiscale platform, ensuring data protection and secure operations. Built using React.js, TypeScript, and Firebase.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-integration">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-gear"></i>
+                </div>
+                <h3>InstantAd.Ai - Meta Developer</h3>
+                <p>Development and configuration of Meta developer integration in InstantAd.Ai platform for advertising automation. Built using Flutter.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-person-badge"></i>
+                </div>
+                <h3>Web Jadi ASN</h3>
+                <p>Web application for ASN (Aparatur Sipil Negara) management and services. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-shield-fill"></i>
+                </div>
+                <h3>Web Jadi TNI</h3>
+                <p>Web application for TNI (Tentara Nasional Indonesia) management and services. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h3>Web Jadi Polri</h3>
+                <p>Web application for Polri (Kepolisian Republik Indonesia) management and services. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-people"></i>
+                </div>
+                <h3>Web HRIS Internal Cerebrum</h3>
+                <p>Human Resources Information System for internal use at Cerebrum company. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web filter-backend">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-book"></i>
+                </div>
+                <h3>Web Admin Apps Alqur'an</h3>
+                <p>Administrative web application for Al-Qur'an mobile app management. Built using PHP, Laravel, and MySQL.</p>
+                <a href="#" title="More Details" class="stretched-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
